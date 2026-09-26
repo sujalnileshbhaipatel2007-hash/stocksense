@@ -1,0 +1,134 @@
+{
+  "project_name": "StockSense - Modular Inventory Management System",
+  "archetype": "ARCHETYPE 2: THE PERFORMANCE PRO (Tactical Operations & Precision)",
+  "theme_strategy": {
+    "default_mode": "dark",
+    "toggle_supported": true,
+    "vibe": "Command-Center Tactical Operations for Warehouse Staff & Inventory Managers",
+    "background": "Deep Obsidian Tint (#090D14 / oklch 14.5% neutral-slate)",
+    "accent_highlights": "Electric Amber (#F59E0B) for low-stock triggers, Tactical Emerald (#10B981) for validated receipts, Signal Crimson (#EF4444) for out-of-stock/critical exceptions, Cobalt Blue (#3B82F6) for transfers",
+    "border_style": "1px crisp slate borders with subtle inner glow, cardless high-density sections or subtle 6px-8px rounded borders"
+  },
+  "typography": {
+    "font_family_heading": "Cabinet Grotesk / Outfit / Geist Variable",
+    "font_family_body": "Inter / Geist Variable, sans-serif",
+    "font_family_mono": "JetBrains Mono / Fira Code (Mandatory for SKUs, Batch numbers, Location Codes, Move Ledger IDs)",
+    "scale": {
+      "h1_hero": "text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight",
+      "h2_section": "text-2xl sm:text-3xl font-bold tracking-tight",
+      "h3_card": "text-lg sm:text-xl font-semibold tracking-normal",
+      "body": "text-sm sm:text-base leading-relaxed",
+      "mono_data": "font-mono text-xs sm:text-sm tracking-wide"
+    },
+    "rules": [
+      "DO NOT use generic centered titles for operations screens; left-align header title block with live metrics & quick-action toolbar.",
+      "All SKU codes (e.g., SKU-7892-BLK), Batch IDs (BAT-2026-004), and Location Codes (WH1-A2-S4) MUST be styled with font-mono and subtle tinted badges.",
+      "Overlines and table column headers must be uppercase text-xs tracking-wider text-muted-foreground font-semibold."
+    ]
+  },
+  "color_system": {
+    "base_dark": {
+      "bg": "oklch(0.13 0.02 260)",
+      "card_surface": "oklch(0.17 0.02 260)",
+      "border": "oklch(0.25 0.02 260)",
+      "foreground": "oklch(0.96 0.01 260)"
+    },
+    "base_light": {
+      "bg": "oklch(0.98 0.01 240)",
+      "card_surface": "oklch(1 0 0)",
+      "border": "oklch(0.91 0.01 240)",
+      "foreground": "oklch(0.18 0.02 260)"
+    },
+    "status_colors": {
+      "in_stock": "text-emerald-500 bg-emerald-500/10 border-emerald-500/30",
+      "low_stock": "text-amber-500 bg-amber-500/10 border-amber-500/30",
+      "out_of_stock": "text-rose-500 bg-rose-500/10 border-rose-500/30",
+      "pending_transfer": "text-blue-500 bg-blue-500/10 border-blue-500/30",
+      "validated": "text-cyan-500 bg-cyan-500/10 border-cyan-500/30"
+    },
+    "forbidden_colors": ["#1B93A4", "#7351B7"],
+    "contrast_rules": "All text elements must strictly pass WCAG AA / APCA standards. Set explicit hover text colors (e.g., hover:bg-slate-800 hover:text-white)."
+  },
+  "layout_and_grids": {
+    "mode": "MODE B: High Density Command Grid",
+    "gap_strategy": "gap-4 md:gap-6",
+    "dashboard_kpi_strip": "grid-cols-2 lg:grid-cols-5 gap-4 (Total Units, Low Stock Alert Count, Pending Receipts, Pending Deliveries, Scheduled Transfers)",
+    "product_catalog_grid": "bento format or dense filterable data table with quick detail drawer",
+    "stock_ledger_layout": "full width data table with live filters, date range selection, location dropdown, and ledger entry expansion",
+    "containers": "Containers with borders must include p-4 or p-6 internal padding to prevent text collision."
+  },
+  "navigation_and_header": {
+    "header_bar": "Sticky glassmorphism header (backdrop-blur-md bg-background/80 border-b z-40) containing Brand Logo ('StockSense'), Active Warehouse Selector ('Central Whse A', 'West Hub B'), Search bar (SKU/Product scan), Low-Stock Notifications bell badge, Theme toggle, and Profile Menu with Role badge (Manager / Staff) and Logout.",
+    "sidebar": "Collapsible operational sidebar with items: 1. Dashboard, 2. Products & Inventory, 3. Incoming Receipts, 4. Outgoing Deliveries, 5. Internal Transfers, 6. Stock Adjustments, 7. Stock Ledger / Move History, 8. Warehouses & Locations, 9. Settings / Seed Data Reset."
+  },
+  "key_features_and_page_hierarchy": {
+    "auth_flow": "Email/password login & signup modal/page, OTP verification simulation screen, password reset flow, and quick 'Demo Manager' / 'Demo Staff' one-click auto-fill credentials button.",
+    "dashboard": "KPI strip at top, visual alert bar for low/out-of-stock items, recent stock movements timeline, upcoming receipts & delivery queues.",
+    "product_crud": "SKU catalog table with quick filters (Category, Location, Stock Status), Reorder threshold alert flags, stock by warehouse breakdown, and Modal for Add/Edit Product.",
+    "receipts_incoming": "Receipt creation form (Supplier, Destination Whse, Expected Date, SKU lines + quantities), Receipt Validation workflow (Draft -> In-Transit -> Validated) which automatically updates total inventory.",
+    "delivery_orders_outgoing": "Delivery order creation (Customer/Destination, Origin Whse, Line items), Validation workflow (Draft -> Picked -> Shipped/Validated) which decreases stock with negative quantity ledger entries.",
+    "internal_transfers": "Multi-location move tool (Source Whse/Bin -> Target Whse/Bin, SKU, Quantity), Instant validation or scheduled transfer state.",
+    "stock_adjustments": "Physical cycle count entry tool (Select Location + SKU -> Input Physical Count -> Calculate Variance +/- -> Validate Reason e.g. Damaged, Audit Discrepancy, Lost).",
+    "stock_ledger": "Read-only Immutable Ledger showing every single unit movement with Timestamp, Movement Type (RECEIPT, DELIVERY, TRANSFER, ADJUSTMENT), SKU, Quantity Delta (+/-), Source, Destination, and User ID.",
+    "warehouses_management": "Warehouse and Location/Bin hierarchy (e.g. Warehouse Alpha -> Zone A -> Shelf 04). Add/Edit Warehouse locations and view capacity metrics.",
+    "seed_demo_data": "Include prominent 'Reset Demo Data' trigger in settings/header to allow instantaneous reload of realistic inventory, low-stock scenarios, and move history."
+  },
+  "data_testing_and_attributes": {
+    "rule": "MUST add data-testid to every interactive and data element.",
+    "examples": [
+      "data-testid='login-email-input'",
+      "data-testid='login-password-input'",
+      "data-testid='login-submit-button'",
+      "data-testid='demo-login-manager-button'",
+      "data-testid='otp-input'",
+      "data-testid='kpi-total-units'",
+      "data-testid='kpi-low-stock-count'",
+      "data-testid='kpi-pending-receipts'",
+      "data-testid='kpi-pending-deliveries'",
+      "data-testid='kpi-scheduled-transfers'",
+      "data-testid='product-search-input'",
+      "data-testid='product-category-filter'",
+      "data-testid='add-product-button'",
+      "data-testid='validate-receipt-button'",
+      "data-testid='validate-delivery-button'",
+      "data-testid='validate-transfer-button'",
+      "data-testid='validate-adjustment-button'",
+      "data-testid='user-profile-menu'",
+      "data-testid='logout-button'"
+    ]
+  },
+  "image_urls": {
+    "warehouse_hero": "https://images.unsplash.com/photo-1622127739239-1905bbaa21b8?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzh8MHwxfHNlYXJjaHwzfHx3YXJlaG91c2UlMjBpbnZlbnRvcnklMjBsb2dpc3RpY3MlMjBtYW5hZ2VyfGVufDB8fHx8MTc5MDQxNDUzOXww&ixlib=rb-4.1.0&q=85",
+    "warehouse_aisle": "https://images.unsplash.com/photo-1664382953403-fc1ac77073a0?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzh8MHwxfHNlYXJjaHwxfHx3YXJlaG91c2UlMjBpbnZlbnRvcnklMjBsb2dpc3RpY3MlMjBtYW5hZ2VyfGVufDB8fHx8MTc5MDQxNDUzOXww&ixlib=rb-4.1.0&q=85",
+    "warehouse_logistics": "https://images.unsplash.com/photo-1592228533283-d78f7c1cf453?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzh8MHwxfHNlYXJjaHwyfHx3YXJlaG91c2UlMjBpbnZlbnRvcnklMjBsb2dpc3RpY3MlMjBtYW5hZ2VyfGVufDB8fHx8MTc5MDQxNDUzOXww&ixlib=rb-4.1.0&q=85"
+  },
+  "component_usage_rules": {
+    "tables": "Use Shadcn Table or TanStack Table with pagination, column sort, filter input, and sticky headers.",
+    "modals": "Use Shadcn Dialog with customized dark/light panel and form validation.",
+    "toasts": "Use Sonner for operational feedback (e.g., 'Stock receipt validated: +250 units added to Whse A').",
+    "date_pickers": "Use Shadcn Calendar / Popover date pickers.",
+    "selects": "Use Shadcn Select for warehouse location and status selection."
+  },
+  "instructions_to_main_agent": [
+    "Build the complete MVP according to the PDF spec with FastAPI backend and React Tailwind frontend.",
+    "Ensure real-time/instant updates on UI whenever receipts, deliveries, transfers, or adjustments are validated.",
+    "Implement one-click demo data login buttons ('Login as Manager', 'Login as Warehouse Staff') on the login screen for instant demo reviewer testing.",
+    "Store all stock ledger entries immutably in MongoDB and display them in the Stock Ledger view with clear + / - color tags.",
+    "Add low-stock alert notifications in top header dropdown and dedicated dashboard exception section.",
+    "Support full responsive mobile view with bottom bar or slide-over drawer for warehouse staff scanning/checking on mobile devices."
+  ],
+  "UNIVERSAL GUIDELINES FOR MAIN AGENT": [
+    "You tend to converge toward generic, 'on distribution' outputs. In frontend design, this creates what users call the 'AI slop' aesthetic. Avoid this: make creative, distinctive frontends that surprise and delight.",
+    "Dark colors look good when used independently without gradients. DO NOT use dark colors as gradients.",
+    "Don't make generic centered layouts, simplistic gradients, and uniform styling.",
+    "Create depth through layered design elements with z-index hierarchy.",
+    "Use glass-morphism effects with backdrop filters (12-24px blur).",
+    "You MUST NOT apply universal transition (e.g., transition: all). Always add transitions for specific interactive elements excluding transforms.",
+    "You MUST NOT center align the app container (.App { text-align: center; }).",
+    "Always use modern button styles like pill-shaped, or sharp button with interaction animations & color relevant to the app style.",
+    "NEVER use AI assistant Emoji characters (🤖, 🧠, 💭, 💡, 🔮, 🎯) for icons; use Lucide or Phosphor icons.",
+    "Every interaction needs micro-animations - hover states, transitions, slide-ins.",
+    "Use 2-3x more spacing than feels comfortable.",
+    "All key interactive elements MUST include data-testid attribute."
+  ]
+}
